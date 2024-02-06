@@ -1,0 +1,10 @@
+services:
+  star-wars:
+    image: postgres
+    container_name: star-wars
+    environment:
+      - POSTGRES_PASSWORD=pg1234
+      - POSTGRES_USERNAME=postgres
+      - POSTGRES_DB=star-wars
+    ports:
+      - 5432:5432
