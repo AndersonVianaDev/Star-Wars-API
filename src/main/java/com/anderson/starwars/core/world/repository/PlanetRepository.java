@@ -9,4 +9,6 @@ public interface PlanetRepository {
     void save(Planet planet);
 
     Planet findById(UUID id);
+
+    Planet findByName(String name);
 }

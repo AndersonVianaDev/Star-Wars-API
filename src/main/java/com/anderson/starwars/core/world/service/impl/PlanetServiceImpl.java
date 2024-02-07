@@ -9,6 +9,7 @@ import com.anderson.starwars.core.world.repository.PlanetRepository;
 import com.anderson.starwars.core.world.service.PlanetService;
 import com.anderson.starwars.core.world.service.PlanetsClientService;
 
+import java.util.OptionalInt;
 import java.util.UUID;
 
 public class PlanetServiceImpl implements PlanetService {
@@ -51,5 +52,19 @@ public class PlanetServiceImpl implements PlanetService {
         return planet;
     }
 
+    @Override
+    public Planet findByName(String name) {
+        if(name == null) {
+            throw new InvalidDataException("Required name");
+        }
+
+        Planet planet = this.repository.findByName(name);
+
+        if(planet == null) {
+            throw new NotFoundException("Planet with name "+ name +" not found");
+        }
+
+        return planet;
+    }
 
 }

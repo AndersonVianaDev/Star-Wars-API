@@ -10,4 +10,6 @@ public interface PlanetService {
     void create(PlanetDTO dto);
 
     Planet findById(UUID id);
+
+    Planet findByName(String name);
 }

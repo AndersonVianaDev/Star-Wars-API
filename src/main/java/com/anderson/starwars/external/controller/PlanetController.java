@@ -36,4 +36,13 @@ public class PlanetController {
 
         return ResponseEntity.status(HttpStatus.OK).body(planetDTO);
     }
+
+    @GetMapping("find/name/")
+    public ResponseEntity<PlanetResponseDTO> findByName(@RequestParam(name = "name") String name) {
+        Planet planet = this.service.findByName(name);
+
+        PlanetResponseDTO planetDTO = planet.toPlanetResponseDTO();
+
+        return ResponseEntity.status(HttpStatus.OK).body(planetDTO);
+    }
 }

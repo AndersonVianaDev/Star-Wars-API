@@ -34,4 +34,15 @@ public class PlanetEntityRepository implements PlanetRepository {
 
         return planetEntity.get().toPlanet();
     }
+
+    @Override
+    public Planet findByName(String name) {
+        Optional<PlanetEntityAdapter> planetEntity = this.repository.findByName(name);
+
+        if(planetEntity.isEmpty()) {
+            return null;
+        }
+
+        return planetEntity.get().toPlanet();
+    }
 }
