@@ -9,6 +9,7 @@ import com.anderson.starwars.core.world.repository.PlanetRepository;
 import com.anderson.starwars.core.world.service.PlanetService;
 import com.anderson.starwars.core.world.service.PlanetsClientService;
 
+import java.util.List;
 import java.util.UUID;
 
 public class PlanetServiceImpl implements PlanetService {
@@ -75,6 +76,13 @@ public class PlanetServiceImpl implements PlanetService {
         Planet planet = this.findById(id);
 
         this.repository.delete(planet);
+    }
+
+    @Override
+    public List<Planet> findAll() {
+        List<Planet> list = this.repository.findAll();
+
+        return list;
     }
 
 }

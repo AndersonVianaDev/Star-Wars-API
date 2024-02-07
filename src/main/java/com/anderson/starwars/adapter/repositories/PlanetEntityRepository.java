@@ -6,6 +6,7 @@ import com.anderson.starwars.core.world.model.Planet;
 import com.anderson.starwars.core.world.repository.PlanetRepository;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -43,10 +44,20 @@ public class PlanetEntityRepository implements PlanetRepository {
         return planetEntity.get().toPlanet();
     }
 
+    @Override
     public void delete(Planet planet) {
         UUID id = planet.getId();
         PlanetEntityAdapter planetEntityAdapter = this.repository.findById(id).orElseThrow(() -> new NotFoundException("Planet with "+ id +" not found"));
 
         this.repository.delete(planetEntityAdapter);
+    }
+
+    @Override
+    public List<Planet> findAll() {
+        List<PlanetEntityAdapter> planetEntityList = this.repository.findAll();
+
+        List<Planet> list = planetEntityList.stream().map(p -> p.toPlanet()).toList();
+
+        return list;
     }
 }

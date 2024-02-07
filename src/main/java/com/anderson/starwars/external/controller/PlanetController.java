@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -51,5 +52,14 @@ public class PlanetController {
         this.service.delete(id);
 
         return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @GetMapping("findAll")
+    public ResponseEntity<List<PlanetResponseDTO>> findAll() {
+        List<Planet> list = this.service.findAll();
+
+        List<PlanetResponseDTO> planetResponseDTOList = list.stream().map(p -> p.toPlanetResponseDTO()).toList();
+
+        return ResponseEntity.status(HttpStatus.OK).body(planetResponseDTOList);
     }
 }

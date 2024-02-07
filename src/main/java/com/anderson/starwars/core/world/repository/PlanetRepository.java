@@ -2,6 +2,7 @@ package com.anderson.starwars.core.world.repository;
 
 import com.anderson.starwars.core.world.model.Planet;
 
+import java.util.List;
 import java.util.UUID;
 
 public interface PlanetRepository {
@@ -13,4 +14,6 @@ public interface PlanetRepository {
     Planet findByName(String name);
 
     void delete(Planet planet);
+
+    List<Planet> findAll();
 }
