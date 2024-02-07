@@ -1,4 +1,4 @@
-package com.anderson.starwars.external.api;
+package com.anderson.starwars.external.controller;
 
 import com.anderson.starwars.core.world.dtos.PlanetDTO;
 import com.anderson.starwars.core.world.service.PlanetService;

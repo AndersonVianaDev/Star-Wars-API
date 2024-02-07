@@ -16,6 +16,7 @@ public class PlanetEntityAdapter {
     private String name;
     private String climate;
     private String ground;
+    private Integer quantity;
 
     public PlanetEntityAdapter() {
     }
@@ -24,10 +25,11 @@ public class PlanetEntityAdapter {
         this.name = planet.getName();
         this.climate = planet.getClimate();
         this.ground = planet.getGround();
+        this.quantity = planet.getQuantity();
     }
 
     public Planet toPlanet() {
-        return new Planet(this.id, this.name, this.climate, this.ground);
+        return new Planet(this.id, this.name, this.climate, this.ground, this.quantity);
     }
 
 }

@@ -11,12 +11,14 @@ public class Planet {
     private String name;
     private String climate;
     private String ground;
+    private Integer quantity;
 
-    public Planet(UUID id, String name, String climate, String ground) {
+    public Planet(UUID id, String name, String climate, String ground, Integer quantity) {
         this.id = id;
         this.name = name;
         this.climate = climate;
         this.ground = ground;
+        this.quantity = quantity;
     }
 
     public Planet(PlanetDTO dto) {
@@ -55,6 +57,12 @@ public class Planet {
 
     public void setGround(String ground) {
         this.ground = ground;
+    }
+
+    public void setQuantity(Integer quantity) { this.quantity = quantity; }
+
+    public Integer getQuantity() {
+        return quantity;
     }
 
     @Override
