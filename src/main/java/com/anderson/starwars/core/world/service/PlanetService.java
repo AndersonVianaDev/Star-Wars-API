@@ -12,4 +12,6 @@ public interface PlanetService {
     Planet findById(UUID id);
 
     Planet findByName(String name);
+
+    void delete(UUID id);
 }

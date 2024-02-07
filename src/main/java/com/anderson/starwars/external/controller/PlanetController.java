@@ -45,4 +45,11 @@ public class PlanetController {
 
         return ResponseEntity.status(HttpStatus.OK).body(planetDTO);
     }
+
+    @DeleteMapping("delete/id/{id}")
+    public ResponseEntity<Void> delete(@PathVariable UUID id) {
+        this.service.delete(id);
+
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
 }

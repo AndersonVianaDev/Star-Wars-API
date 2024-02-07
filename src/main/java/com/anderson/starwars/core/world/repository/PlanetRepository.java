@@ -11,4 +11,6 @@ public interface PlanetRepository {
     Planet findById(UUID id);
 
     Planet findByName(String name);
+
+    void delete(Planet planet);
 }

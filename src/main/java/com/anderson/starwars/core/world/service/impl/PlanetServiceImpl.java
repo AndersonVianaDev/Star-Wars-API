@@ -9,7 +9,6 @@ import com.anderson.starwars.core.world.repository.PlanetRepository;
 import com.anderson.starwars.core.world.service.PlanetService;
 import com.anderson.starwars.core.world.service.PlanetsClientService;
 
-import java.util.OptionalInt;
 import java.util.UUID;
 
 public class PlanetServiceImpl implements PlanetService {
@@ -65,6 +64,17 @@ public class PlanetServiceImpl implements PlanetService {
         }
 
         return planet;
+    }
+
+    @Override
+    public void delete(UUID id) {
+        if(id == null) {
+            throw new InvalidDataException("Required id");
+        }
+
+        Planet planet = this.findById(id);
+
+        this.repository.delete(planet);
     }
 
 }
