@@ -16,13 +16,12 @@ public class StarWarService implements PlanetsClientService {
 
     @Override
     public PlanetClientDTO getPlanet(String name) {
-        PlanetClientDTO planetsClient = null;
 
         for (int i=1; i<=60; i++) {
-            planetsClient = this.service.getPlanet(i);
-            if(planetsClient.name().equalsIgnoreCase(name)) break;
+            PlanetClientDTO planetsClient = this.service.getPlanet(i);
+            if(planetsClient.name().equalsIgnoreCase(name)) return planetsClient;
         }
 
-        return planetsClient;
+        return null;
     }
 }

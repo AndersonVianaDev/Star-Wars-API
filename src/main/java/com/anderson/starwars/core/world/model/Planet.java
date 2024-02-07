@@ -36,10 +36,6 @@ public class Planet {
         return id;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
@@ -51,17 +47,8 @@ public class Planet {
     public String getClimate() {
         return climate;
     }
-
-    public void setClimate(String climate) {
-        this.climate = climate;
-    }
-
     public String getGround() {
         return ground;
-    }
-
-    public void setGround(String ground) {
-        this.ground = ground;
     }
 
     public void setQuantity(Integer quantity) { this.quantity = quantity; }
