@@ -5,6 +5,9 @@ import com.anderson.starwars.core.world.model.Planet;
 import com.anderson.starwars.core.world.repository.PlanetRepository;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+import java.util.UUID;
+
 @Component
 public class PlanetEntityRepository implements PlanetRepository {
 
@@ -19,5 +22,16 @@ public class PlanetEntityRepository implements PlanetRepository {
         PlanetEntityAdapter worldEntity = new PlanetEntityAdapter(planet);
 
         this.repository.save(worldEntity);
+    }
+
+    @Override
+    public Planet findById(UUID id) {
+        Optional<PlanetEntityAdapter> planetEntity = this.repository.findById(id);
+
+        if(planetEntity.isEmpty()) {
+            return null;
+        }
+
+        return planetEntity.get().toPlanet();
     }
 }

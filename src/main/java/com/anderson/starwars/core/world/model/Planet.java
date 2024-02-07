@@ -1,6 +1,7 @@
 package com.anderson.starwars.core.world.model;
 
 import com.anderson.starwars.core.world.dtos.PlanetDTO;
+import com.anderson.starwars.core.world.dtos.PlanetResponseDTO;
 
 import java.util.Objects;
 import java.util.UUID;
@@ -25,6 +26,10 @@ public class Planet {
         this.name = dto.name();
         this.climate = dto.climate();
         this.ground = dto.ground();
+    }
+
+    public PlanetResponseDTO toPlanetResponseDTO() {
+        return new PlanetResponseDTO(this.name, this.climate, this.ground, this.quantity);
     }
 
     public UUID getId() {

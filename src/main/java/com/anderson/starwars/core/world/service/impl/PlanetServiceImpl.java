@@ -2,10 +2,14 @@ package com.anderson.starwars.core.world.service.impl;
 
 import com.anderson.starwars.core.world.dtos.PlanetDTO;
 import com.anderson.starwars.core.world.dtos.PlanetClientDTO;
+import com.anderson.starwars.core.world.exceptions.InvalidDataException;
+import com.anderson.starwars.core.world.exceptions.NotFoundException;
 import com.anderson.starwars.core.world.model.Planet;
 import com.anderson.starwars.core.world.repository.PlanetRepository;
 import com.anderson.starwars.core.world.service.PlanetService;
 import com.anderson.starwars.core.world.service.PlanetsClientService;
+
+import java.util.UUID;
 
 public class PlanetServiceImpl implements PlanetService {
 
@@ -31,4 +35,21 @@ public class PlanetServiceImpl implements PlanetService {
 
         this.repository.save(planet);
     }
+
+    @Override
+    public Planet findById(UUID id) {
+        if(id == null) {
+            throw new InvalidDataException("Required id");
+        }
+
+        Planet planet = this.repository.findById(id);
+
+        if(planet == null) {
+            throw new NotFoundException("Planet with id "+ id +" not found !");
+        }
+
+        return planet;
+    }
+
+
 }
