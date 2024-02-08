@@ -8,7 +8,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableFeignClients
-@OpenAPIDefinition(info = @Info(title = "star-wars-api", version = "1", description = "API designed to manage tasks"))
+@OpenAPIDefinition(info = @Info(title = "star-wars-api", version = "1", description = "API designed for Star Wars fans"))
 public class StarWarsApplication {
 
 	public static void main(String[] args) {
