@@ -2,6 +2,7 @@ package com.anderson.starwars.core.world.service.impl;
 
 import com.anderson.starwars.core.world.dtos.PlanetDTO;
 import com.anderson.starwars.core.world.dtos.PlanetClientDTO;
+import com.anderson.starwars.core.world.exceptions.ExistingPlanetException;
 import com.anderson.starwars.core.world.exceptions.InvalidDataException;
 import com.anderson.starwars.core.world.exceptions.NotFoundException;
 import com.anderson.starwars.core.world.model.Planet;
@@ -24,6 +25,10 @@ public class PlanetServiceImpl implements PlanetService {
 
     @Override
     public void create(PlanetDTO dto) {
+        if(this.repository.findByName(dto.name()) != null) {
+            throw new ExistingPlanetException("Existing planet");
+        }
+
         Planet planet = new Planet(dto);
 
         PlanetClientDTO planetClient = this.service.getPlanet(planet.getName());
