@@ -40,13 +40,10 @@ public class Planet {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getClimate() {
         return climate;
     }
+    
     public String getGround() {
         return ground;
     }
