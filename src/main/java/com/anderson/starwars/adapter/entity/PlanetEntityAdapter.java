@@ -4,6 +4,7 @@ package com.anderson.starwars.adapter.entity;
 import com.anderson.starwars.core.world.model.Planet;
 import jakarta.persistence.*;
 
+import java.util.Objects;
 import java.util.UUID;
 
 @Entity
@@ -32,4 +33,16 @@ public class PlanetEntityAdapter {
         return new Planet(this.id, this.name, this.climate, this.ground, this.quantity);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PlanetEntityAdapter that = (PlanetEntityAdapter) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }
